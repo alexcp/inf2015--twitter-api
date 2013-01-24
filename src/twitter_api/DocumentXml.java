@@ -12,11 +12,13 @@ public class DocumentXml {
     public String obtenirTexteDeLElement(Node parent,String nomElement){
         String resultat = null;
         NodeList liste = parent.getChildNodes();
+
         for(int i=0; i < liste.getLength(); i++){
             if(liste.item(i).getNodeName().equals(nomElement)){
                 resultat = liste.item(i).getTextContent();
             }
         }
+        
         return resultat;
     }
 
@@ -29,6 +31,5 @@ public class DocumentXml {
         DocumentBuilder  builder = factory.newDocumentBuilder();
         return builder.parse(url);
     }
-
 
 }

@@ -12,11 +12,13 @@ public class Twitter_api {
 
     public static void main(String[] args) {
         String url = constuireUrl(args[0]);
+
         try{
             DocumentXml xml = new DocumentXml(url);
-            NodeList liste = xml.obtenirLesElements("status");
-            for(int i=0; i < liste.getLength();i++){
-                System.out.println(xml.obtenirTexteDeLElement(liste.item(i),"text"));
+            NodeList listeDeBalises = xml.obtenirLesElements("status");
+
+            for(int i=0; i < listeDeBalises.getLength();i++){
+                System.out.println(xml.obtenirTexteDeLElement(listeDeBalises.item(i),"text"));
             }
 
         }catch(Exception e){

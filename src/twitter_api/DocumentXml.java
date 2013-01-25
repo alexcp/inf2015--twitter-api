@@ -9,6 +9,10 @@ public class DocumentXml {
         this.document = obtenirLeContenuDeLurl(url);
     }
 
+    public DocumentXml() throws Exception{
+        this.document = nouveauDocument();
+    }
+
     public String obtenirTexteDeLElement(Node parent,String nomElement){
         String resultat = null;
         NodeList liste = parent.getChildNodes();
@@ -18,7 +22,7 @@ public class DocumentXml {
                 resultat = liste.item(i).getTextContent();
             }
         }
-        
+
         return resultat;
     }
 
@@ -27,9 +31,16 @@ public class DocumentXml {
     }
 
     private Document obtenirLeContenuDeLurl(String url) throws Exception{
+        return nouveauDocumentBuilder().parse(url);
+    }
+
+    private Document nouveauDocument() throws Exception{
+        return nouveauDocumentBuilder().newDocument();
+    }
+
+    private DocumentBuilder nouveauDocumentBuilder() throws Exception{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder  builder = factory.newDocumentBuilder();
-        return builder.parse(url);
+        return factory.newDocumentBuilder();
     }
 
 }

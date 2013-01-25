@@ -1,0 +1,18 @@
+<users>
+  <user name="alexcp_">
+    <tweet>...</tweet>
+    <tweet>...</tweet>
+    <tweet>...</tweet>
+    <tweet>...</tweet>
+    <tweet>...</tweet>
+  </user>
+</users>
+
+
+
+
+
+
+
+        transformer.setOutputProperty(OutputKeys.INDENT,"yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");

@@ -3,26 +3,33 @@ import org.w3c.dom.*;
 
 public class Twitter_api {
 
-    public static String constuireUrl(String screenName){
+    public static String constuireUrl(String screenName) {
         String url = "https://api.twitter.com/1/statuses/user_timeline.xml?screen_name=";
         url += screenName;
         url += "&count=5";
         return url;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String url = constuireUrl(args[0]);
 
-        try{
+            DocumentXml nouveauDocument = new DocumentXml();
+            Element racine = nouveauDocument.nouvelleElement("users");
+            nouveauDocument.ajouterElement(racine);
+
+            Element user = nouveauDocument.nouvelleElement("user");
+            user.setAttribute("name", args[0]);
+            racine.appendChild(user);
+
             DocumentXml xml = new DocumentXml(url);
             NodeList listeDeBalises = xml.obtenirLesElements("status");
 
             for(int i=0; i < listeDeBalises.getLength();i++){
-                System.out.println(xml.obtenirTexteDeLElement(listeDeBalises.item(i),"text"));
+                Element tweet = nouveauDocument.nouvelleElement("tweet");
+                tweet.setTextContent(xml.obtenirTexteDeLElement(listeDeBalises.item(i),"text"));
+                user.appendChild(tweet);
             }
 
-        }catch(Exception e){
-            System.out.println("Erreur: Impossible de lire l'url");
-        }
+            nouveauDocument.enregistrerSous("result.xml");
     }
 }

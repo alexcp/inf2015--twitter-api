@@ -1,6 +1,11 @@
 package twitter_api;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
+import java.io.*;
+
 
 public class DocumentXml {
     private Document document;
@@ -11,6 +16,14 @@ public class DocumentXml {
 
     public DocumentXml() throws Exception{
         this.document = nouveauDocument();
+    }
+
+    public Element nouvelleElement(String nom){
+        return document.createElement(nom);
+    }
+
+    public void ajouterElement(Element element){
+          this.document.appendChild(element);
     }
 
     public String obtenirTexteDeLElement(Node parent,String nomElement){
@@ -28,6 +41,14 @@ public class DocumentXml {
 
     public NodeList obtenirLesElements(String nomDesElements){
         return document.getElementsByTagName(nomDesElements);
+    }
+
+    public void enregistrerSous(String nomFichier) throws Exception{
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        Source source = new DOMSource(document);
+        Result result = new StreamResult(new File(nomFichier));
+        transformer.setOutputProperty(OutputKeys.INDENT,"yes");
+        transformer.transform(source, result);
     }
 
     private Document obtenirLeContenuDeLurl(String url) throws Exception{

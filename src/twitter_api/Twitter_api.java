@@ -14,6 +14,7 @@ public class Twitter_api {
         String url = constuireUrl(args[0]);
 
             DocumentXml nouveauDocument = new DocumentXml();
+            
             Element racine = nouveauDocument.nouvelleElement("users");
             nouveauDocument.ajouterElement(racine);
 

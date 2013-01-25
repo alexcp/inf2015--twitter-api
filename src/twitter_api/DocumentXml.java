@@ -47,7 +47,10 @@ public class DocumentXml {
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         Source source = new DOMSource(document);
         Result result = new StreamResult(new File(nomFichier));
+
         transformer.setOutputProperty(OutputKeys.INDENT,"yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        
         transformer.transform(source, result);
     }
 

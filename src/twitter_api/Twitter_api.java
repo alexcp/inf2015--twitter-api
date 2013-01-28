@@ -11,26 +11,29 @@ public class Twitter_api {
     }
 
     public static void main(String[] args) throws Exception {
+
+        DocumentXml nouveauDocument = new DocumentXml();
+
+        Element racine = nouveauDocument.nouvelleElement("users");
+        nouveauDocument.ajouterElement(racine);
+
+        DocumentXml xmlUsers = new DocumentXml("users.xml");
+
         String url = constuireUrl(args[0]);
 
-            DocumentXml nouveauDocument = new DocumentXml();
-            
-            Element racine = nouveauDocument.nouvelleElement("users");
-            nouveauDocument.ajouterElement(racine);
+        Element user = nouveauDocument.nouvelleElement("user");
+        user.setAttribute("name", args[0]);
+        racine.appendChild(user);
 
-            Element user = nouveauDocument.nouvelleElement("user");
-            user.setAttribute("name", args[0]);
-            racine.appendChild(user);
+        DocumentXml xml = new DocumentXml(url);
+        NodeList listeDeBalises = xml.obtenirLesElements("status");
 
-            DocumentXml xml = new DocumentXml(url);
-            NodeList listeDeBalises = xml.obtenirLesElements("status");
+        for(int i=0; i < listeDeBalises.getLength();i++){
+            Element tweet = nouveauDocument.nouvelleElement("tweet");
+            tweet.setTextContent(xml.obtenirTexteDeLElement(listeDeBalises.item(i),"text"));
+            user.appendChild(tweet);
+        }
 
-            for(int i=0; i < listeDeBalises.getLength();i++){
-                Element tweet = nouveauDocument.nouvelleElement("tweet");
-                tweet.setTextContent(xml.obtenirTexteDeLElement(listeDeBalises.item(i),"text"));
-                user.appendChild(tweet);
-            }
-
-            nouveauDocument.enregistrerSous("result.xml");
+        nouveauDocument.enregistrerSous("result.xml");
     }
 }

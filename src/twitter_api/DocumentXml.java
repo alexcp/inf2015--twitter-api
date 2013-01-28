@@ -10,8 +10,12 @@ import java.io.*;
 public class DocumentXml {
     private Document document;
 
-    public DocumentXml(String url) throws Exception{
-        this.document = obtenirLeContenuDeLurl(url);
+    public DocumentXml(String path) throws Exception{
+        if(isAUrl(path)){
+            this.document = obtenirLeContenuDeLurl(path);
+        }else{
+            this.document = obtenirLeContenuDuFichier(path);
+        }
     }
 
     public DocumentXml() throws Exception{
@@ -54,8 +58,17 @@ public class DocumentXml {
         transformer.transform(source, result);
     }
 
+    private boolean isAUrl(String path){
+        // retourne vrai si le string contient "http"
+        return path.contains("http");
+    }
+
     private Document obtenirLeContenuDeLurl(String url) throws Exception{
         return nouveauDocumentBuilder().parse(url);
+    }
+
+    private Document obtenirLeContenuDuFichier(String path) throws Exception{
+        return nouveauDocumentBuilder().parse(new File(path));
     }
 
     private Document nouveauDocument() throws Exception{

@@ -7,4 +7,24 @@
     <tweet>@jacquesberger @rimthong @jpcaissy On peut le faire sans passer par la ligne de commande avec :args path/* et :argdo %s/cmd/cmd/ge | update</tweet>
     <tweet>Learn Vimscript the Hard Way http://t.co/CLI7LKML</tweet>
   </user>
+  <user name="garybernhardt">
+    <tweet>@joedamato -&amp;gt; @lloydhilaiel</tweet>
+    <tweet>@joedamato Last commit was over a year ago. Looks bad. :(</tweet>
+    <tweet>@sorenmacbeth I'm so excited about this. Lettuce is such a hard problem. Why am I so excited about this?</tweet>
+    <tweet>@sorenmacbeth Top or bottom? I am excited to try this.</tweet>
+    <tweet>@jmhodges Clicking that link showed me a spinner. Checked back two minutes later. Spinner. lol @rdio</tweet>
+  </user>
+  <user name="jeg2">
+    <tweet>@lennonpatton I hope you have a better tomorrow.</tweet>
+    <tweet>@envygeeks Interesting, I never had trouble with redirects.  It's the developer tools that drove me away.  Man those tanked.</tweet>
+    <tweet>Finally switching to Chrome as my default browser.  Liking most things, but this bug is annoying:  http://t.co/1H4EjVCj</tweet>
+    <tweet>@jason_madsen That's one of my favorites too.  /cc @rubyrogues</tweet>
+  </user>
+  <user name="jacquesberger">
+    <tweet>Tiens donc, une chaîne vide en JS vaut false... voilà qui va simplifier mon code.</tweet>
+    <tweet>@sofcj17 Pas tous, apparemment :D</tweet>
+    <tweet>Ça me fait toujours rire quand un étudiant m'appelle "Mr. Jack"</tweet>
+    <tweet>@jfmonette Daryl doit survivre!!</tweet>
+    <tweet>@jfmonette Ouin... sinon Carl ferait mon affaire aussi, même si je suis sûr qu'il ne va jamais mourir.</tweet>
+  </user>
 </users>

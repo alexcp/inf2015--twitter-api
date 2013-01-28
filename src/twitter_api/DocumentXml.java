@@ -47,6 +47,12 @@ public class DocumentXml {
         return document.getElementsByTagName(nomDesElements);
     }
 
+    public String obtenirAttributDe(Node node, String nomAttribut){
+        //On cast le node comme étant un Element
+        Element element = (Element)node;
+        return element.getAttribute(nomAttribut);
+    }
+
     public void enregistrerSous(String nomFichier) throws Exception{
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         Source source = new DOMSource(document);

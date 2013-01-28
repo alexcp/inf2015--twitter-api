@@ -6,4 +6,4 @@
 
 Produisez le fichier result.xml avec les 5 derniers tweets des utilisateurs dans le fichier [users.xml](https://github.com/alexcp/inf2015--twitter-api/blob/master/users.xml)
 
-Je vais mettre ma solution dans une branche identifié à cet effet.
+Vous pouvez consulter ma solution (fait rapidement et sans refactoring) [ici](https://github.com/alexcp/inf2015--twitter-api/tree/exercice)

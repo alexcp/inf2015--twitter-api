@@ -6,16 +6,15 @@ public class TwitterUser {
     String userName;
     private DocumentXml userData;
 
-    public TwitterUser(String userName, String option){
-       self.userName = userName; 
-       userData = new DocumentXml(constuireUrl(userName,options));
+    public TwitterUser(String userName, String option) throws Exception{
+       this.userName = userName; 
+       userData = new DocumentXml(constuireUrl(userName,option));
     }
 
     public String[] tweets(){
-        NodeList listeDeBalises = balisesTweets();
         ArrayList<String> contenuDesTweets = new ArrayList<String>();
 
-        for(int i=0; i < listeDeBalises.getLength();i++){
+        for(int i=0; i < balisesTweets().getLength();i++){
             contenuDesTweets.add(tweetContent(i));
         }
 
@@ -28,7 +27,7 @@ public class TwitterUser {
     }
 
     private String tweetContent(int position){
-        return userData.obtenirTexteDeLElement(balisesTweets.item(position),"text");
+        return userData.obtenirTexteDeLElement(balisesTweets().item(position),"text");
     }
 
     private static String constuireUrl(String screenName, String option){
@@ -36,7 +35,7 @@ public class TwitterUser {
         url += screenName;
         //url += "&count=5";
 
-        if(option){
+        if(option != null){
             url += "&" + option;
         }
 

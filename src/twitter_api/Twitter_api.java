@@ -11,15 +11,24 @@ public class Twitter_api {
     }
 
     public static void main(String[] args) throws Exception {
-        String url = constuireUrl(args[0]);
 
-            DocumentXml nouveauDocument = new DocumentXml();
-            
-            Element racine = nouveauDocument.nouvelleElement("users");
-            nouveauDocument.ajouterElement(racine);
+        DocumentXml nouveauDocument = new DocumentXml();
+
+        Element racine = nouveauDocument.nouvelleElement("users");
+        nouveauDocument.ajouterElement(racine);
+
+        DocumentXml xmlUsers = new DocumentXml("users.xml");
+
+        NodeList listeDeBaliseUser = xmlUsers.obtenirLesElements("user");
+
+        for(int x=0; x < listeDeBaliseUser.getLength();x++){
+
+            String username = xmlUsers.obtenirAttributDe(listeDeBaliseUser.item(x),"name");
+
+            String url = constuireUrl(username);
 
             Element user = nouveauDocument.nouvelleElement("user");
-            user.setAttribute("name", args[0]);
+            user.setAttribute("name", username);
             racine.appendChild(user);
 
             DocumentXml xml = new DocumentXml(url);
@@ -30,7 +39,8 @@ public class Twitter_api {
                 tweet.setTextContent(xml.obtenirTexteDeLElement(listeDeBalises.item(i),"text"));
                 user.appendChild(tweet);
             }
+        }
 
-            nouveauDocument.enregistrerSous("result.xml");
+        nouveauDocument.enregistrerSous("result.xml");
     }
 }
